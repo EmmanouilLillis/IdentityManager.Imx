@@ -92,7 +92,7 @@ export function initConfig(config: QerService): () => Promise<any> {
     BusyIndicatorModule,
     DataSourceToolbarModule,
     DataTableModule,
-    DataTilesModule,
+    DataTilesModule, 
     DataTreeModule,
     ShoppingCartValidationDetailModule,
     FkAdvancedPickerModule,
