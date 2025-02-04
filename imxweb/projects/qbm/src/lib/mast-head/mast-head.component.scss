@@ -1,5 +1,11 @@
 @import "@elemental-ui/core/src/styles/_palette.scss";
 @import '@elemental-ui/core/src/styles/_eui_palette.scss';
+@import 'variables.scss';
+
+.mat-toolbar.mat-primary{
+  background: $CCC_Orange;
+}
+
 
 :host {
   .imx-masthead-app-name {

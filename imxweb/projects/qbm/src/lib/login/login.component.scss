@@ -89,6 +89,10 @@ $inputWidth: calc(40vw + 2px);
       color: #fff;
       border: 1px solid #fff ;
     }
+    &:focus{//for button in login
+      background-color: $CCC_Orange;
+      color: #fff;
+    }
   }
 }
 

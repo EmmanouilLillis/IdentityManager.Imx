@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+@import 'variables';
 
 $material_icons_font_path: "~node_modules/@elemental-ui/core/assets/MaterialIcons";
 $cadence_font_path: "~node_modules/@elemental-ui/core/assets/Cadence";
@@ -116,3 +117,382 @@ imx-data-explorer-accounts {
   }
 }
 
+
+// Orange theme
+.splash-screen-container{//for loading
+    background-color: $CCC_Orange !important;
+}
+
+.mat-spinner  circle{
+    stroke: $CCC_Orange !important;
+}
+
+header.eui-masthead{
+    background-color: $CCC_Orange;
+}
+  
+imx-start .mat-card {
+    .mat-button-wrapper{// main page
+    color: $CCC_Orange;
+    }
+    .mat-button.mat-primary{
+        color: $CCC_Orange;
+        .mat-button-focus-overlay{
+        background-color: $CCC_Orange;
+        }
+    }
+    
+
+}
+  
+imx-help-contextual button.mat-icon-button .mat-button-wrapper eui-icon {//for icon in new request
+    color: $CCC_Orange;
+}
+imx-new-request-recipients .eui-clickable:focus.eui-clickable--primary{
+    background-image: linear-gradient(#f8e0ce 0 0);
+}
+
+.mat-card.imx-card .imx-content span {//for A,A 
+    color: $CCC_Orange !important;
+}
+
+body .mat-tab-group.mat-primary .mat-ink-bar, body .mat-tab-nav-bar.mat-primary .mat-ink-bar {//for small lip in bar
+    background-color: $CCC_Orange;
+}
+
+.eui-top-navigation-item-active.mat-button {
+    border-bottom: 2px solid $CCC_Orange !important;
+}
+
+.imx-data-source-toolbar-middle .eui-search-icon {
+    color: $CCC_Orange; // search icon in 
+}
+
+div.snavigation-side-toggle button{// navi bar in requests
+    color: $CCC_Orange !important;
+}
+
+imx-new-request-product eui-icon.colored-icon {// for icons
+    color: $CCC_Orange !important;
+}
+
+img {//for image
+    filter: brightness(0) saturate(100%) invert(43%) sepia(41%) saturate(4922%) hue-rotate(2deg) brightness(105%) contrast(103%);//ff6200
+}
+
+div.imx-toolbar .mat-raised-button.mat-primary {//for enabled button cart
+    background-color: $CCC_Orange !important; 
+
+}
+
+div.imx-toolbar .mat-raised-button.mat-primary:disabled {//for disabled button cart
+    background-color: #ccc !important;  
+}
+.mat-dialog-container button{//for popup button
+    background-color: $CCC_Orange !important;
+}
+.mat-dialog-container a{//for popup text
+    color: $CCC_Orange !important;
+}
+
+imx-itshop-pattern div.imx-button-bar button[data-imx-identifier="itshop-pattern-button-create"]{
+    background-color: $CCC_Orange ;
+}
+
+imx-new-request-peer-group div.mat-chip-list-wrapper mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+    background-color: $CCC_Orange ;
+}
+.mat-progress-bar-buffer{
+    background-color: #f8e0ce !important;
+}
+.mat-progress-bar-fill::after {
+    background-color: $CCC_Orange !important;
+}
+
+div.eui-sidesheet .mat-toolbar{
+    background-color: $CCC_Orange;
+}
+
+.mat-card.imx-card:hover{//name hover border
+        border: 1px solid $CCC_Orange !important;
+}
+
+.eui-sidesheet-content eui-badge .eui-badge-color--primary{
+    background-color: $CCC_Orange !important;
+}
+
+.eui-sidesheet-content div.eui-alert{
+    background-color: #ff620060 !important;//a bit fade
+}
+
+.eui-sidesheet-content div.eui-alert.eui-alert-type--info .eui-alert-icon{//for alert icon
+    color: $CCC_Orange;
+}
+
+div.eui-sidesheet__content button[data-imx-identifier="cdr-fkadvancedpicker-button-apply-selection"]{
+    background-color:$CCC_Orange;
+}
+.snavigation-side-content{//for a bit fade
+    background-color: #f8e0ce !important;
+    border: 1px solid #f8e0ce !important;
+}
+.mat-tree-node--selected{
+    color: $CCC_Orange !important;
+    border: 1px solid $CCC_OrangeFade !important;
+}
+.mat-sidenav button[aria-label="Show"]{
+    background-color: #f8e0ce !important;
+    border: 1px solid $CCC_OrangeFade !important;
+}
+
+imx-product-bundle-list h3{
+    color: $CCC_Orange !important;
+}
+imx-product-bundle-list button{
+    color: $CCC_Orange !important;
+}
+imx-product-bundle-list imx-data-table{
+    background-color: $CCC_OrangeFade !important;
+}
+
+//for filter
+div.logical-op-container button.mat-stroked-button.mat-primary{
+    color: $CCC_Orange;
+}
+
+.mat-form-field.mat-focused div.mat-form-field-outline-thick{//border on searchbar
+    color: $CCC_Orange;
+}
+
+.mat-form-field.mat-focused div.mat-select-arrow{// for arrow in selector
+    color: $CCC_Orange !important;
+}
+.mat-form-field.mat-focused .mat-form-field-underline .mat-form-field-ripple {// for underlip in selector 
+    background-color: $CCC_Orange !important; 
+}
+.mat-select-panel.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {// for selected numbers
+    color: $CCC_Orange !important; 
+}
+
+.imx-generic-tile-content div{//number in home page product in shopping cart
+    background-color: $CCC_OrangeFade !important;
+    color: $CCC_Orange !important;
+}
+body .mat-step-header .mat-step-icon-selected, 
+body .mat-step-header .mat-step-icon-state-done, 
+body .mat-step-header .mat-step-icon-state-edit {//responsibilities, declarations chackboxxed all situations 
+    background-color: $CCC_Orange;
+
+}
+mat-stepper button.mat-stroked-button.mat-primary{//buttons , same as above
+    color: $CCC_Orange;
+}
+body .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: $CCC_Orange !important;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: $CCC_Orange !important; 
+}
+
+body .mat-input-element{
+    caret-color: $CCC_Orange;
+}
+
+body .mat-datepicker-toggle-active{// time and date icons
+    color: $CCC_Orange;
+}
+
+imx-time-picker button.mat-flat-button.mat-primary{// time button
+    background-color: $CCC_Orange;
+}
+//calendar
+mat-calendar div .mat-calendar-body-selected{
+    background-color: $CCC_Orange;
+}
+
+imx-calendar button.mat-button.mat-primary{
+    color: $CCC_Orange;
+}
+body .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover 
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {// for hover in calendar
+    background-color: $CCC_OrangeFade;
+}
+
+button.mat-calendar-body-cell.mat-calendar-body-active > 
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    background-color: $CCC_OrangeFade;
+}
+
+////////////////
+//filter slide
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
+    background-color: $CCC_OrangeFade !important;
+}
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
+    background-color: $CCC_Orange !important;
+}
+.imx-sort-buttons .mat-raised-button.mat-primary{
+    background-color: $CCC_Orange;
+}
+eui-sidesheet button.mat-raised-button.mat-primary:not(.mat-button-disabled){
+    background-color: $CCC_Orange !important;
+}
+
+
+//My responsibilities
+.snavigation .snavigation-side-content {
+    .snavigation-item:hover:not(.snavigation-item--selected){
+        background-color: $CCC_OrangeFade !important;
+    }
+
+    .snavigation-item--selected {
+        background-color: $CCC_Orange !important;
+    }
+}
+
+.data-explorer-card-header {
+    border: 1px solid $CCC_Orange !important;
+    .data-explorer-card-header-bg{
+        background-color: $CCC_OrangeFade !important;}
+}
+.data-explorer .data-explorer-card-header .data-explorer-card-header-bg .eui-icon {
+    color: $CCC_Orange !important;
+}
+
+.imx-data-table-highlightedActive .mat-row:hover {// for hover in tables , this for request maybe more?
+    background-color: $CCC_OrangeFade !important;
+}
+
+.data-explorer-bottom-button-row .mat-raised-button.mat-primary{
+    background-color: $CCC_Orange;
+}
+
+.imx-button-bar button.mat-raised-button.mat-primary{// device button 
+    background-color: $CCC_Orange;
+}
+
+
+//for filter sidesheat page
+.eui-light-theme .expression-container:hover {
+    border-color: $CCC_Orange !important;
+    .expression-container-header{
+        background-color: $CCC_Orange !important;
+        color: #ccc !important;
+    }
+}
+.eui-light-theme .expression-container-header{
+    color: $CCC_Orange !important;
+}
+.selected-logical-op{
+    color: $CCC_Orange !important;
+}
+
+//create report in sidesheet
+.eui-sidesheet[data-testid="report-create-sidesheet-container"] .mat-button.mat-primary{
+    color: $CCC_Orange;
+    .mat-button-focus-overlay{/// for hover or focus
+        color: $CCC_OrangeFade;
+    }
+}
+
+//profile settings
+//password 
+.imx-password-questions-empty-actions button{
+    background-color: $CCC_Orange !important;
+}
+
+//address Book
+//filter sidesheet
+.eui-sidesheet[data-testid="filter-wizard-sidesheet-container"] .mat-flat-button.mat-primary{
+    background-color: $CCC_Orange;
+    color: #ffffff;
+}
+
+//group 
+.mat-menu-content .mat-menu-item:enabled>.link-button {
+    color: $CCC_Orange;
+}
+
+//setting additional columns popup
+.cdk-overlay-pane.imx-toolbar-dialog .eui-alert.eui-alert-type--info.eui-alert-colored{
+    background-color: $CCC_OrangeFade;
+    border: 1px solid $CCC_Orange;
+    .eui-alert-icon{
+        color: $CCC_Orange;
+    }
+}
+
+//sidesheet arrow icons and hover
+.eui-sidesheet__content[data-testid="addressbook-view-identity-details-content"] {
+    .mat-expansion-indicator:after{
+    color: $CCC_Orange  ;
+    }
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+        background-color: $CCC_OrangeFade;
+    }
+}
+
+//new request product by reference user 
+//buttons 
+imx-new-request-reference-user {
+    eui-icon.colored-icon{
+        color: $CCC_Orange !important;
+    }
+    .imx-reference-toolbar .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+    background-color: $CCC_Orange;
+    }
+}
+
+
+//Attestations 
+//my attestation
+imx-attestation-history .imx-icons-container .table-icon--primary .eui-icon{
+    color: $CCC_Orange !important;
+}
+imx-attestation-history-details {// sidesheet
+    .mat-expansion-indicator:after {
+        color: $CCC_Orange;
+    }
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+    background: $CCC_OrangeFade;
+    }
+} 
+// export data 
+imx-data-export {
+    a {
+        color: $CCC_Orange !important;
+    }
+    .tool-bar-left .mat-stroked-button.mat-primary {
+        color: $CCC_Orange;
+        }
+}
+
+//Pending Attestation
+imx-data-table .mat-stroked-button.mat-primary {
+    color: $CCC_Orange;
+}
+//sidesheet
+imx-attestation-case{
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+        background: $CCC_OrangeFade;
+    }
+    .mat-expansion-indicator:after {
+        color: $CCC_Orange;
+    }
+    .eui-sidesheet-actions .mat-flat-button.mat-primary{
+    
+        background-color: $CCC_Orange ;
+    }
+    .eui-alert.eui-alert-type--info.eui-alert-colored {
+        background-color: $CCC_OrangeFade;
+        border: 1px solid $CCC_Orange;
+    }
+    .eui-alert.eui-alert-type--info .eui-alert-icon {
+        color: $CCC_Orange;
+    }
+}
+
+//Empty Shop Cart
+imx-shopping-cart-empty .mat-raised-button.mat-primary{
+    background-color: $CCC_Orange;
+}
