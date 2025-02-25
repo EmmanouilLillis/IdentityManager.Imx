@@ -31,9 +31,22 @@ import { UserConfig, ProjectConfig, QerProjectConfig } from 'imx-api-qer';
 import { UserModelService } from '../../user/user-model.service';
 import { PendingItemsType } from '../../user/pending-items-type.interface';
 import { ProjectConfigurationService } from '../../project-configuration/project-configuration.service';
-import { imx_SessionService, SystemInfoService } from 'qbm';
+import { imx_SessionService, SystemInfoService, AppConfigService } from 'qbm';
 import { SystemInfo } from 'imx-api-qbm';
 import { DashboardService } from './dashboard.service';
+import { MethodDescriptor, TimeZoneInfo } from 'imx-qbm-dbts';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+interface fullName{
+  FirstName: string;
+  LastName: string;
+}
+
+interface bannerDet{
+  isInDepartmentDX: boolean;
+  isConfigEnabled: boolean;
+  bannerMessage: string;
+}
 
 @Component({
   templateUrl: './start.component.html',
@@ -47,6 +60,11 @@ export class StartComponent implements OnInit {
   public systemInfo: SystemInfo;
   public viewReady: boolean;
   public userUid: string;
+  public firstName: string;
+  public lastName: string;
+  public isInDepartment: boolean;
+  public isConfigEnabled: boolean;
+  public bannerText: string;
 
   constructor(
     public readonly router: Router,
@@ -55,7 +73,9 @@ export class StartComponent implements OnInit {
     private readonly systemInfoService: SystemInfoService,
     private readonly sessionService: imx_SessionService,
     private readonly detectRef: ChangeDetectorRef,
-    private readonly projectConfigurationService: ProjectConfigurationService
+    private readonly projectConfigurationService: ProjectConfigurationService,
+    private readonly config: AppConfigService,
+    private snackBar: MatSnackBar
   ) {}
 
   public async ngOnInit(): Promise<void> {
@@ -70,6 +90,8 @@ export class StartComponent implements OnInit {
       this.projectConfig = await this.projectConfigurationService.getConfig();
       this.systemInfo = await this.systemInfoService.get();
       this.userUid = (await this.sessionService.getSessionState()).UserUid;
+      this.FirstNameLastName();
+      this.BannerDetails();
     } finally {
       busy.endBusy();
     }
@@ -119,6 +141,10 @@ export class StartComponent implements OnInit {
     this.router.navigate(['qpmintegration'], {});
   }
 
+  public GoToSupportPageCCC(): void{
+    this.router.navigate(['support-page']);
+  }
+
   public GoToDashboardEmployeesByRiskIndex(): void {
     // TODO (ADO 207303) this.router.navigate(['/VI_Start_Governance'], { Part: 'Risk' });
   }
@@ -160,5 +186,54 @@ export class StartComponent implements OnInit {
   public ShowNewRequestLink(): boolean {
     // Starting a new request is only allowed when the session has an identity and the ITShop(Requests) feature is enabled
     return this.userConfig?.IsITShopEnabled && this.userUid && this.systemInfo.PreProps.includes('ITSHOP');
+  }
+
+  showSnackBar() {
+    this.snackBar.open('alert closed', 'OK');
+  }
+
+  public async FirstNameLastName(): Promise<void>{
+    let nameObject = await this.config.apiClient.processRequest<fullName>(this.GetFirstNameLastName());
+    this.firstName = nameObject.FirstName;
+    this.lastName = nameObject.LastName;
+    
+  }
+
+  public async BannerDetails(): Promise<void>{
+    let bannerObject = await this.config.apiClient.processRequest<bannerDet>(this.GetBanner());
+    this.isInDepartment = bannerObject.isInDepartmentDX;
+    this.isConfigEnabled = bannerObject.isConfigEnabled;
+    this.bannerText= bannerObject.bannerMessage;
+    ///console.log("In department DX: " , this.isInDepartment , "Config is: ",this.isConfigEnabled ,  "Text: ",this.bannerText);
+
+  }
+
+
+  private GetFirstNameLastName(): MethodDescriptor<void>{
+    return{
+      path: '/portal/exercise/nameofloggedinuser',
+      parameters: [],
+      method: 'GET',
+      headers: {
+        'imx-timezone': TimeZoneInfo.get()
+      },
+      credentials: 'include',
+      observe: 'response',
+      responseType: 'json'
+    };
+  }
+
+  private GetBanner(): MethodDescriptor<void>{
+    return{
+      path: '/portal/exercise/getbanner',
+      parameters: [],
+      method: 'GET',
+      headers: {
+        'imx-timezone': TimeZoneInfo.get()
+      },
+      credentials: 'include',
+      observe: 'response',
+      responseType: 'json'
+    };
   }
 }

@@ -169,19 +169,20 @@ export class InitService {
           return null;
         }
 
-        return {
-          id: 'ROOT_Responsibilities',
-          title: '#LDS#Responsibilities',
-          sorting: '30',
-          items: [
-            {
-              id: 'QER_Responsibilities_AssignDevice',
-              route: 'claimdevice',
-              title: '#LDS#Menu Entry Device ownership',
-              sorting: '30-20',
-            },
-          ],
-        };
+        //For Responsibilities Tab
+        // return { 
+        //   id: 'ROOT_Responsibilities',
+        //   title: '#LDS#Responsibilities',
+        //   sorting: '30',
+        //   items: [
+        //     {
+        //       id: 'QER_Responsibilities_AssignDevice',
+        //       route: 'claimdevice',
+        //       title: '#LDS#Menu Entry Device ownership',
+        //       sorting: '30-20',
+        //     },
+        //   ],
+        // };
       }
     );
   }

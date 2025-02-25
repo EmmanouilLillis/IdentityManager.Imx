@@ -1,0 +1,38 @@
+<h2 class="mat-headline">
+  <span>My Reporting Identities</span>
+  <eui-icon icon="info"  (click)=" openDialog()"></eui-icon>
+</h2>
+<div class="mat-elevation-z8">
+    <div class="table-container">
+      
+      <!-- Search bar -->
+      <div class="search-bar">
+        <mat-form-field appearance="fill">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search by FirstName , LastName or Email" />
+        </mat-form-field>
+      </div>
+      
+      <!-- Material Table -->
+      <mat-table [dataSource]="dataSource">
+        
+        <!-- Dynamic Column Generation -->
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+          <mat-header-cell *matHeaderCellDef >
+            {{ column }}
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element[column] }}
+          </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="GoToSideSheet(row)"></mat-row>
+      </mat-table>
+    
+      <!-- Paginator -->
+      <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  
+  

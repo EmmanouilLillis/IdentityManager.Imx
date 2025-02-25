@@ -41,6 +41,7 @@ import {
   FkAdvancedPickerModule,
   LdsReplaceModule,
   QbmModule,
+  RouteGuardService,
   TileModule,
 } from 'qbm';
 
@@ -56,6 +57,8 @@ import { TilesModule } from './tiles/tiles.module';
 import { UserModule } from './user/user.module';
 import { BusinessOwnerChartSummaryComponent } from './wport/businessowner-chartsummary/businessowner-chartsummary.component';
 import { StartComponent } from './wport/start/start.component';
+import { SupportPageComponent } from './support-page/support-page.component';
+import { RouterModule, Routes } from '@angular/router';
 
 export function initConfig(config: QerService): () => Promise<any> {
   return () =>
@@ -67,14 +70,24 @@ export function initConfig(config: QerService): () => Promise<any> {
     });
 }
 
+const routes : Routes = [
+ { 
+  path: 'support-page',
+  component: SupportPageComponent,
+  canActivate: [RouteGuardService],
+  resolve: [RouteGuardService ]
+}]
+
 // @dynamic
 @NgModule({
   declarations: [
     BusinessOwnerChartSummaryComponent, 
     StartComponent, 
-    SettingsComponent,
+    SettingsComponent, SupportPageComponent,
   ],
   imports: [
+    RouterModule,
+    RouterModule.forChild(routes),
     CommonModule,
     QbmModule,
     CdrModule,
@@ -104,6 +117,7 @@ export function initConfig(config: QerService): () => Promise<any> {
       deps: [QerService],
       multi: true,
     },
+    RouteGuardService,
     ServiceItemsService,
     PatternItemService,
   ],

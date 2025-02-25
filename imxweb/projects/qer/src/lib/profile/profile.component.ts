@@ -42,7 +42,8 @@ import {
   TabItem,
   ExtService,
   HelpContextualValues,
-  HELP_CONTEXTUAL
+  HELP_CONTEXTUAL,
+  CdrFactoryService
 } from 'qbm';
 import { IEntity } from 'imx-qbm-dbts';
 import { ProjectConfigurationService } from '../project-configuration/project-configuration.service';
@@ -118,6 +119,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private readonly confirmation: ConfirmationService,
     private readonly permissions: QerPermissionsService,
     private readonly qerClient: QerApiService,
+    private readonly cdrfactoryService: CdrFactoryService
   ) {
     this.subscriptions.push(this.authentication.onSessionResponse.subscribe(async (sessionState: ISessionState) => {
       if (sessionState.IsLoggedIn) {
@@ -235,21 +237,48 @@ export class ProfileComponent implements OnInit, OnDestroy {
       if (this.columns == null) {
         this.columns = (await this.projectConfig.getConfig()).PersonConfig.VI_PersonalData_Fields;
       }
-
+      console.log(this.columns);
+      
       if (this.identities == null) {
         this.identities = (await this.person.getMasterdata()).Data.map(item => item.GetEntity());
       }
-
+      
       this.selectedIdentity = (await this.person.getMasterdataInteractive(userUid)).Data[0].GetEntity();
-
-      this.cdrList = (this.columns ?? []).map(columnName => {
+      
+      this.cdrList = (this.columns ?? [])
+        .filter(columnName => columnName !== 'MiddleName')
+        .map(columnName => {
         const column = this.selectedIdentity.GetColumn(columnName);
         return {
           column,
-          isReadOnly: () => !column.GetMetadata().CanEdit(),
+          isReadOnly: () => /*false*/ !column.GetMetadata().CanEdit() || columnName !== 'ContactEmail',// If email then readonly else leave it to permissions
           hint: this.hints[columnName]
         };
       });
+
+
+      // the ootb way?
+
+      // this.cdrList = this.cdrfactoryService.buildCdrFromColumnList(this.selectedIdentity, this.columns, true)
+      //   .filter(cdr => cdr.column.ColumnName !== 'MiddleName')
+      //   .map(cdr => cdr.column.ColumnName === 'ContactEmail'
+      //     ? { ...cdr, isReadOnly: () => !cdr.column.GetMetadata().CanEdit() }
+      //     : cdr
+      //   );
+
+
+      // //Second way of doing it
+      // this.cdrList = this.cdrList
+      //   .filter(cdr => cdr.column.ColumnName !== 'MiddleName')
+      //   .map(cdr => ({
+      //     ...cdr,
+      //     isReadOnly: cdr.column.ColumnName !== 'ContactEmail'
+      //       ? () => true // If email then readonly
+      //       : () => !cdr.column.GetMetadata().CanEdit(), //  else leave it to permissions
+      //   }));
+
+
+      
 
       this.mailInfo = await this.mailSvc.getMailsThatCanBeUnsubscribed(userUid);
       this.hasMailSubscriptions = this.mailInfo.length > 0;

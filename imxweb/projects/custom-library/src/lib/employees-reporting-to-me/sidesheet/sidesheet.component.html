@@ -1,0 +1,36 @@
+<eui-alert 
+*ngIf="isError"
+type="warning"
+colored="true" 
+dismissable="true"
+(dismissed)="CloseAlert()" 
+>{{alertMsg}}</eui-alert>
+
+<div *ngIf="loading" class="spinner-overlay">
+  <mat-spinner></mat-spinner>
+</div>
+<div>
+  <ng-container *ngIf="sidesheetdata">
+    <div class="sidesheet-title">
+      <h2>Identity Details</h2>
+      <p><strong>Email:</strong> {{ sidesheetdata.Email }}</p>
+    </div>
+  </ng-container>
+</div>
+<br>
+<mat-form-field appearance="outline">
+  <mat-label>Custom Property 1</mat-label>
+  <input matInput [(ngModel)]="inputValue">
+</mat-form-field>
+<br>
+<eui-date-picker 
+  [dateControl]="date2" 
+  placeholder="Without text input" 
+  label="Exit Date" 
+  [allowTextInput]="false" 
+  [useClearIcon]="true">
+</eui-date-picker> 
+<br>
+<button mat-raised-button (click)="ApplyUpdates()">Apply</button>
+    
+

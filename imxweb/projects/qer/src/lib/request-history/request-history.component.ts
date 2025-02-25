@@ -26,19 +26,20 @@
 
 import { Component, OnInit } from '@angular/core';
 import { QerPermissionsService } from  '../admin/qer-permissions.service';
-import { HELP_CONTEXTUAL, HelpContextualValues } from 'qbm';
+import { HELP_CONTEXTUAL, HelpContextualValues, imx_SessionService } from 'qbm';
 
 @Component({
   templateUrl: './request-history.component.html',
   styleUrls: ['./request-history.component.scss']
 })
 export class RequestHistoryComponent implements OnInit {
-
+  public userUID: string;
   public auditMode = false;
   contextId: HelpContextualValues;
 
   constructor(
     private readonly qerPermissionService: QerPermissionsService,
+    private readonly sessionService: imx_SessionService
   ) {}
 
   public async ngOnInit(): Promise<void> {
@@ -48,6 +49,8 @@ export class RequestHistoryComponent implements OnInit {
     }else{
       this.contextId = HELP_CONTEXTUAL.RequestHistory;
     }
+
+    this.userUID = (await this.sessionService.getSessionState()).UserUid;
     
   }
 }

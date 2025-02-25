@@ -22,6 +22,8 @@
       "qer/*": ["dist/qer/*"],
       "aob": ["dist/aob"],
       "aob/*": ["dist/aob/*"],
+      "custom-library": ["dist/custom-library"],
+      "custom-library/*": ["dist/custom-library/*"],
       "tsb": ["dist/tsb"],
       "tsb/*": ["dist/tsb/*"],
       "att": ["dist/att"],

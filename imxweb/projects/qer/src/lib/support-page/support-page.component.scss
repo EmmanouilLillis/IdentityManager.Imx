@@ -1,0 +1,23 @@
+@import "variables.scss";
+
+.support-page {
+    font-size: 16px;
+    color: #666666;
+    h1{
+        font-size: 26px;
+        color: #333333;
+        font-weight: 500;
+    }
+    .orange-text{
+        font-size: 18px;
+        color: $CCC_Orange
+    }
+    a{
+        color: #05AADB;
+        text-decoration: none;
+    }
+    .closeUp{
+        margin-top: 5px;
+        margin-bottom: 5px
+    }
+}

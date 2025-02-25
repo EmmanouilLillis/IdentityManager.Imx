@@ -173,7 +173,7 @@ export class RequestTableComponent implements OnInit, OnDestroy, OnChanges {
 
     if (this.extensions && this.extensions.length > 0) {
       this.extensions[0].subject.subscribe((dstSettings: DataSourceToolbarSettings) => {
-        this.dstSettings = dstSettings;
+        this.dstSettings = dstSettings;        
       });
     }
 
@@ -207,7 +207,7 @@ export class RequestTableComponent implements OnInit, OnDestroy, OnChanges {
 
     const busy = this.busyService.beginBusy();
     try {
-      this.userUid = (await this.session.getSessionState()).UserUid;
+      this.userUid = (await this.session.getSessionState()).UserUid;  
       this.dataModel = await this.requestHistoryService.getDataModel(this.userUid);
       this.viewConfig = await this.viewConfigService.getInitialDSTExtension(this.dataModel, this.viewConfigPath);
       this.activatedRoute.queryParams.subscribe((params) => this.updateFiltersFromRouteParams(params));
@@ -288,9 +288,11 @@ export class RequestTableComponent implements OnInit, OnDestroy, OnChanges {
     if (newState) {
       this.navigationState = newState;
     }
-
     try {
       const personUid = this.uidRecipientRequester || this.requestHistoryFilters?.selectedUid;
+      console.log(personUid);
+      
+      
       if (personUid) {
         this.navigationState.UID_Person = personUid;
 
@@ -301,7 +303,7 @@ export class RequestTableComponent implements OnInit, OnDestroy, OnChanges {
         this.navigationState.uidpersonordered = this.uidRecipient;
         this.navigationState.uidpersoninserted = this.userUid;
       }
-
+ 
       // We check here if we have a default config, if so then we will skip the init data to save time
       let data: ExtendedTypedEntityCollection<ItshopRequest, PwoExtendedData>;
       if (isInit) {

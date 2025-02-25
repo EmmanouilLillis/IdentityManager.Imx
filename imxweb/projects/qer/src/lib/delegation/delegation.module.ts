@@ -115,12 +115,13 @@ export class DelegationModule {
         if (items.length === 0) {
           return null;
         }
-        return {
-          id: 'ROOT_Responsibilities',
-          title: '#LDS#Responsibilities',
-          sorting: '30',
-          items
-        };
+        //For Responsibilities Tab
+        // return {
+        //   id: 'ROOT_Responsibilities',
+        //   title: '#LDS#Responsibilities',
+        //   sorting: '30',
+        //   items
+        // };
       },
     );
   }

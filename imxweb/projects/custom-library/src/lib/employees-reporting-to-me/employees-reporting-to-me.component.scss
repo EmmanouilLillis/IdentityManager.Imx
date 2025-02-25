@@ -1,0 +1,42 @@
+.mat-elevation-z8{
+    background-color: white;
+}
+.mat-header-cell{
+    background-color: bisque;
+}
+
+:host ::ng-deep .search-bar{
+       .mat-form-field.mat-focused{
+        .mat-form-field-flex{
+            border: 1px solid #ff6200;
+        }
+    }
+    .mat-form-field{
+    padding: 20px 20px 0px 20px;
+    background-color: rgba(247, 206, 179, 0.089);
+    .mat-form-field-flex{
+        border: 1px solid black;
+        border-radius: 20px 20px;
+    }
+    .mat-form-field-underline{
+        width: 0% ;
+    }
+    }
+} 
+ 
+eui-icon{
+    cursor: pointer;
+    margin-left: 10px;
+    color: #ff6200;
+}
+
+.mat-row:hover{
+    cursor: pointer;
+    background-color: #f7e4d0;
+}
+
+.search-bar mat-form-field{
+    display: block;
+}
+
+  
