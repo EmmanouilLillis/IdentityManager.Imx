@@ -16,8 +16,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { SidesheetComponent } from './employees-reporting-to-me/sidesheet/sidesheet.component';
 import { FormsModule } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
@@ -30,22 +28,6 @@ const routes: Routes = [
   },
 ];
 
-export const EUI_DATE_FORMATS = {
-  parse: {
-    dateInput: ['LL', 'L'],
-  },
-  display: {
-    dateInput: 'LL',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
-
-export const EuiDateProviders = [
-  { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-  { provide: MAT_DATE_FORMATS, useValue: EUI_DATE_FORMATS },
-];
 
 @NgModule({
   declarations: [
@@ -74,7 +56,7 @@ export const EuiDateProviders = [
   ],
   providers: [
       RouteGuardService,
-      ...EuiDateProviders
+      // ...EuiDateProviders
   ]
 })
 export class CustomLibraryModule { 

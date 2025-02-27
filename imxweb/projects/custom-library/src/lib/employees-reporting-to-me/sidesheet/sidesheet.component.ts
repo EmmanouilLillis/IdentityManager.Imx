@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EUI_SIDESHEET_DATA, EuiSidesheetRef,} from '@elemental-ui/core';
-import moment from 'moment';
 import { CustomLibraryService } from '../../custom-library.service';
+import { DateAdapter } from '@angular/material/core';
 interface UpdateData{
   Email: string,
   CustomProperty: string,
@@ -25,12 +25,13 @@ export class SidesheetComponent implements OnInit {
     CustomProperty: '',
     ExitDate: ''
   };
-  date2 = new FormControl(''); // For the date picker
+  date2 = new FormControl(); // For the date picker
 
   constructor(
     @Inject(EUI_SIDESHEET_DATA) public sidesheetdata?: any,
     private readonly customLibraryService?: CustomLibraryService,
-    private readonly sidesheetRef ?: EuiSidesheetRef
+    private readonly sidesheetRef ?: EuiSidesheetRef,
+    private readonly dateAdapter?: DateAdapter<any>
 
   ) {}
 
@@ -44,22 +45,26 @@ export class SidesheetComponent implements OnInit {
       this.isError = true;
       return;
     }
-    const selectedDate = moment(this.date2.value);
-    const today = moment().startOf('day'); 
-    if (selectedDate.isBefore(today, 'day') || !selectedDate.isValid()) {
-      this.alertMsg  = 'Please Select a valid date !';
+    
+     const selectedDate = this.date2.value.format('YYYY-MM-DD HH:mm:ss.SSS')
+     const today = new Date();
+     today.setHours(0, 0, 0, 0); // Reset time to midnight
+
+    if (new Date(selectedDate) < today ) {
+      this.alertMsg = 'Please Select a valid date!';
       this.isError = true;
       return;
     }
+
+    
   
     // If all checks pass, proceed with your logic
-    const formattedDate = selectedDate.format('YYYY-MM-DD HH:mm:ss.SSS');
-    console.log('Proceeding with:', formattedDate, this.inputValue);
+    console.log('Proceeding with:', selectedDate, this.inputValue);
   
     this.updateData = {
       Email: this.sidesheetdata?.Email,
       CustomProperty: this.inputValue,
-      ExitDate: formattedDate
+      ExitDate: selectedDate.toString()
     };
 
     this.loading = true;
