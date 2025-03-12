@@ -29,9 +29,9 @@ import { Router } from '@angular/router';
 
 import { SystemInfo } from 'imx-api-qbm';
 import { ProjectConfig, QerProjectConfig, UserConfig } from 'imx-api-qer';
-import { imx_SessionService, SplashService, SystemInfoService } from 'qbm';
+import { imx_SessionService, SplashService, SystemInfoService , AppConfigService, SnackBarService } from 'qbm';
 import { ProjectConfigurationService } from '../../project-configuration/project-configuration.service';
-import { PendingItemsType, AppConfigService } from '../../user/pending-items-type.interface';
+import { PendingItemsType } from '../../user/pending-items-type.interface';
 import { UserModelService } from '../../user/user-model.service';
 import { DashboardService } from './dashboard.service';
 import { MethodDescriptor, TimeZoneInfo } from 'imx-qbm-dbts';
@@ -73,7 +73,11 @@ export class StartComponent implements OnInit {
     private readonly systemInfoService: SystemInfoService,
     private readonly sessionService: imx_SessionService,
     private readonly detectRef: ChangeDetectorRef,
-    private readonly projectConfigurationService: ProjectConfigurationService
+    private readonly projectConfigurationService: ProjectConfigurationService,
+    private readonly config: AppConfigService,
+    private readonly splash: SplashService,
+    private readonly snackBar: MatSnackBar
+
   ) {}
 
   public async ngOnInit(): Promise<void> {
