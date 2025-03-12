@@ -96,7 +96,6 @@ export class NewRequestAddToCartService {
 
     await this.addOrgsToCart();
 
-    // show snackbar
     if (this.savedItems !== this.possibleItems) {
       this.snackbar.open({
         key: this.savedItems === 0
@@ -108,6 +107,10 @@ export class NewRequestAddToCartService {
       this.snackbar.open({
         key: '#LDS#{0} products have been successfully added to your shopping cart.',
         parameters: [this.savedItems],
+      },
+      undefined,
+      {
+      duration: 0
       });
     }
     await this.userModelService.reloadPendingItems();
