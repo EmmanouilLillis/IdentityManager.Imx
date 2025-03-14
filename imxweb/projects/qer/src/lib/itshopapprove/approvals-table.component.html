@@ -17,7 +17,8 @@
   <imx-data-source-toolbar
     #dst
     [busyService]="busyService"
-    [options]="['search', 'sort', 'settings', 'filter']"
+    [options]="['search', 'sort', 'settings']"
+    [forFilter]="false"
     [settings]="dstSettings"
     data-imx-identifier="approvals-table-dst"
     (search)="onSearch($event)"

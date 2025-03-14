@@ -1357,13 +1357,19 @@ export class DataSourceToolbarComponent implements OnChanges, OnInit, OnDestroy 
     );
   }
 
-  public canShowFilterWizard(): boolean {
+  @Input() forFilter: boolean = true;
+
+  public canShowFilterWizard(): boolean {      
+
     let result =
-      (this.settings?.entitySchema?.TypeName != null &&
+      ((this.settings?.entitySchema?.TypeName != null &&
         this.filterService.isSqlWizardImplemented &&
         !this.isDataSourceLocal &&
         !this.disableFilterWizard) ||
-      this.settings?.filters?.length > 0;
+      this.settings?.filters?.length > 0) && this.forFilter;
+    
+
+      
     return result;
   }
 
