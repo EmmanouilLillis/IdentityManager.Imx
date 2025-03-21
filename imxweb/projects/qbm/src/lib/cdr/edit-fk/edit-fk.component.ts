@@ -193,7 +193,7 @@ export class EditFkComponent implements CdrEditor, AfterViewInit, OnDestroy, OnI
    * Reinitialize the candidate list, if the input is focused.
    */
   public async inputFocus(): Promise<void> {
-    if (!this.candidates?.length && !this.loading) {
+    if (!this.candidates?.length && !this.loading) {  
       await this.initCandidates();
     }
   }
@@ -418,10 +418,15 @@ export class EditFkComponent implements CdrEditor, AfterViewInit, OnDestroy, OnI
       await this.updateCandidates({
         StartIndex: 0,
         PageSize: this.pageSize,
+        // filter:     [{
+        //   ColumnName: 'EmployeeType',
+        //   CompareOp: 0, // Adjust according to your API's expected operator or enum value
+        //   Value1: 'Customer'
+        // }],
         filter: undefined,
         search: undefined,
       });
-
+      //console.log(this.candidates);
       this.changeDetectorRef.detectChanges();
     }
   }
@@ -471,7 +476,6 @@ export class EditFkComponent implements CdrEditor, AfterViewInit, OnDestroy, OnI
         }
         this.parameters = { ...this.parameters, ...newState };
         const candidateCollection = await this.selectedTable.Get(this.parameters);
-
         if (candidateCollection) {
           this.candidatesTotalCount = candidateCollection?.TotalCount;
 

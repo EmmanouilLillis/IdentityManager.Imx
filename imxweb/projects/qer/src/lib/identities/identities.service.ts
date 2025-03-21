@@ -175,6 +175,8 @@ export class IdentitiesService {
     }
     this.logger.debug(this, `Retrieving reports of the manager`);
     this.logger.trace('Navigation state', navigationState);
+    console.log(navigationState);
+    
     return this.qerClient.typedClient.PortalPersonReports.Get(navigationState, { signal: this.abortController.signal });
   }
 

@@ -30,6 +30,7 @@ import {
   CollectionLoadParameters,
   EntitySchema,
   ExtendedTypedEntityCollection,
+  FilterData,
 } from 'imx-qbm-dbts';
 import { GlobalDelegationInput, PortalDelegable, PortalDelegations, PortalDelegationsGlobalRoleclasses } from 'imx-api-qer';
 
@@ -69,21 +70,46 @@ export class DelegationService {
     return (await this.qerApiService.typedClient.PortalDelegationsGlobalRoleclasses.Get(uidUser, { PageSize: 1024 })).Data;
   }
 
+  // public buildSenderCdr(entity: PortalDelegations) {
+  //   const schema = this.getDelegationSchema();
+  //   const fkProviderItems = this.qerApiService.client.getFkProviderItems('portal/delegations').map((item) => ({
+  //     ...item,
+  //     load: (_, parameters = {}) => this.qerApiService.client.portal_delegations_UID_PersonReceiver_candidates_get({ ...parameters, OnlyDirect: true }),
+  //     getDataModel: async (entity) => item.getDataModel(entity),
+  //     getFilterTree: async (entity, parentKey) => item.getFilterTree(entity, parentKey),
+  //   }));
+  //   const column = this.entityService.createLocalEntityColumn(
+  //     schema.Columns.UID_PersonSender,
+  //     fkProviderItems,
+  //     undefined,
+  //     async (_, newValue: string) => await entity.UID_PersonSender.Column.PutValue(newValue)
+  //   );
+
+  //   return new BaseCdr(column);
+  // }
+
   public buildSenderCdr(entity: PortalDelegations) {
     const schema = this.getDelegationSchema();
+    let filter: FilterData[] = [
+      { ColumnName: 'CustomProperty01', CompareOp: 0, Value1: 'test' },
+    ];
+    // let filter: FilterData[] = []
     const fkProviderItems = this.qerApiService.client.getFkProviderItems('portal/delegations').map((item) => ({
       ...item,
-      load: (_, parameters = {}) => this.qerApiService.client.portal_person_reports_get({ ...parameters, OnlyDirect: true }),
-      getDataModel: async (entity) => item.getDataModel(entity),
-      getFilterTree: async (entity, parentKey) => item.getFilterTree(entity, parentKey),
+      load: (_, parameters = {}) =>
+        this.qerApiService.client.portal_delegations_UID_PersonReceiver_candidates_get({ ...parameters, filter: filter}),
+      getDataModel: async (entity) => item.getDataModel?.(entity) || {},
+      getFilterTree: async (entity, parentKey) => item.getFilterTree?.(entity, parentKey) || {},
     }));
+    //console.log(this.qerApiService.client.portal_delegations_UID_PersonReceiver_candidates_get({filter: filter}));
+    
     const column = this.entityService.createLocalEntityColumn(
       schema.Columns.UID_PersonSender,
       fkProviderItems,
       undefined,
-      async (_, newValue: string) => await entity.UID_PersonSender.Column.PutValue(newValue)
+      async (_, newValue: string) => await entity.UID_PersonSender.Column.PutValue(newValue),
     );
-
+ 
     return new BaseCdr(column);
   }
 

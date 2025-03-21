@@ -37,6 +37,7 @@ import {
   DataModelProperty,
   DisplayColumns,
   EntitySchema,
+  FilterData,
   IClientProperty,
   TypedEntityCollectionData,
 } from 'imx-qbm-dbts';
@@ -150,6 +151,9 @@ export class DataExplorerIdentitiesComponent implements OnInit, OnDestroy, SideN
     settingsService: SettingsService,
     private extService: ExtService
   ) {
+    // let filter: FilterData[] = [
+    //   { ColumnName: 'UID_Department', CompareOp: 0, Value1: 'cd8f98db-f0e5-4f82-97a7-cde2ee6041b5' },
+    // ];
     this.navigationState = { PageSize: settingsService.DefaultPageSize, StartIndex: 0 };
     this.authorityDataDeleted$ = this.identitiesService.authorityDataDeleted.subscribe(() => this.navigate());
 

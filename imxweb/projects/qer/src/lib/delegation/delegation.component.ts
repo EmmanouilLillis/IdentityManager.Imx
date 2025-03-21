@@ -427,7 +427,8 @@ export class DelegationComponent implements OnInit, OnDestroy {
    */
   private initRecipientForm(): void {
     Object.keys(this.recipientFormGroup.controls).forEach((name) => this.recipientFormGroup.removeControl(name));
-    this.cdrPersonRecipient = new BaseCdr(this.newDelegation.UID_PersonReceiver.Column);
+    //this.cdrPersonRecipient = new BaseCdr(this.newDelegation.UID_PersonReceiver.Column); 
+    this.cdrPersonRecipient = this.delegationService.buildSenderCdr(this.newDelegation);
   }
 
   /**
@@ -443,7 +444,8 @@ export class DelegationComponent implements OnInit, OnDestroy {
     }
 
     this.addTimeCdr();
-    this.cdrPersonRecipient = new BaseCdr(this.newDelegation.UID_PersonReceiver.Column);
+    this.cdrPersonRecipient = this.delegationService.buildSenderCdr(this.newDelegation);
+    //this.cdrPersonRecipient = new BaseCdr(this.newDelegation.UID_PersonReceiver.Column);
     this.cdrList = values.map((column) => new BaseCdr(column));
   }
 
