@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+@import 'variables.scss';
 
 $material_icons_font_path: "~node_modules/@elemental-ui/core/assets/MaterialIcons";
 $cadence_font_path: "~node_modules/@elemental-ui/core/assets/Cadence";
@@ -114,5 +115,447 @@ imx-data-explorer-accounts {
   .eui-sidesheet-actions.mat-card.eui-sidesheet-actions--white{
       background-color: $color-gray-90;
   }
+}
+
+// Changed Color theme
+// for Login
+.imx-loginPage{
+    background-color: $CCC_Black !important;
+    .imx-button:hover{
+      background-color: $CCC_RedHover;
+    }
+    .imx-button:focus{
+      background-color: $CCC_Red;
+    }
+  }
+  
+  .splash-screen-container{
+    background-color: $CCC_Black !important;
+  }
+  
+  .eui-top-navigation-desktop .eui-top-navigation .mat-button.eui-top-navigation-item-active{
+    border-bottom: 2px solid $CCC_Black !important;
+  }
+  //Ink bar
+  mat-ink-bar {
+    background-color: $CCC_Black !important;
+  }
+  
+  body {
+    button.mat-raised-button.mat-primary{
+      background-color: $CCC_Red ;
+    }
+    button.mat-raised-button.mat-primary:not(.mat-button-disabled):hover{
+      background-color: $CCC_RedHover ;
+    }
+    .mat-icon-button.mat-primary{
+      color: $CCC_Red;
+    }
+    button.mat-warn{
+      color: $CCC_Red;
+    }
+    .mat-flat-button.mat-primary{
+      background-color: $CCC_Red;
+    }
+  }
+  
+  .imx-generic-tile-content div{
+    color: $CCC_Black !important;
+    background-color: #bcbcbc !important;
+  }
+  
+  mat-card-title eui-icon{
+    color:$CCC_Red !important;
+  }
+  
+  
+  body .mat-button.mat-primary{
+    color: $CCC_BlackLight;
+  }
+  body .mat-button.mat-primary:hover{
+    background-color: $CCC_LightRed;
+  }
+  
+  //Masthead
+  .eui-masthead{
+    background-color: $CCC_Black !important;
+    mat-toolbar{
+      background: $CCC_Black !important;
+    }
+  }
+  //Spinner
+  body .mat-progress-spinner circle, body .mat-spinner circle{
+    stroke: $CCC_Red;
+  }
+  //New Request
+  imx-new-request-recipients {
+    div span{
+      color: $CCC_Red !important;
+    }
+    .mat-card:hover{
+      border: 1px solid $CCC_Red !important;
+    }
+    .mat-card:focus{
+      background-color: #bcbcbc !important;
+    }
+  }
+  imx-new-request-reference-user-card {
+    div span{
+      color: $CCC_Red !important;
+    }
+    .mat-card:hover{
+      border: 1px solid $CCC_Red !important;
+    }
+    .mat-card:focus{
+      background-color: #bcbcbc !important;
+    }
+  }
+  //For img *might need change for deploy logo*
+  img {
+      filter: brightness(0) saturate(100%) invert(21%) sepia(83%) saturate(2252%) hue-rotate(345deg) brightness(99%) contrast(94%);
+  }
+  imx-new-request-content {
+    .mat-tree-node--selected{
+      color: $CCC_Red !important;
+    }
+    eui-icon.colored-icon{
+      color: $CCC_Red !important;
+    }
+  
+    mat-card.snavigation-side-content{
+      background-color: $CCC_White !important;
+      border: 1px solid $CCC_White !important;
+    }
+    .mat-tree-node--selected{
+      border: 1px solid $CCC_Red !important;
+    }
+  }
+  
+  imx-data-source-toolbar .eui-search-icon {
+    color: $CCC_Red !important;
+  }
+  
+  .imx-request-label-value{
+    color: $CCC_Red !important;
+  }
+  
+   .mat-sidenav:not(.snavigation-side--expanded) .expand-control-button{
+    background-color: $CCC_White !important;
+    border: 1px solid #c4cacc !important;
+  }
+  
+  .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+    background-color: $CCC_Red !important;
+  }
+  //Product bunle
+  imx-product-bundle-list{ 
+    .imx-product-bundle-list-header-text{
+      color: $CCC_Red !important;
+    }
+    imx-data-table{
+      background-color: $CCC_White !important;
+    }
+    .imx-table-container{
+      border-color: $CCC_White !important;
+    }
+    tr.mat-row{
+      background-color: $CCC_White !important;
+    }
+    tr.mat-row.imx-data-table-row-highlighted{
+      border-color: $CCC_Red !important;
+      outline-color: $CCC_Red !important;
+    }
+  } 
+  
+  imx-product-bundle-items {
+    .imx-bundle-header eui-icon{
+      color: $CCC_Red !important;
+    }
+  }
+  
+  eui-search{
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+      color: $CCC_Red;
+    }
+    .mat-input-element{
+      caret-color: $CCC_Red;
+    }
+  }
+  
+  body{
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background-color: $CCC_Red;
+    }
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+        background-color: $CCC_Red;
+    }
+  } 
+
+body {
+    .mat-progress-bar-fill::after {
+        background-color: $CCC_Red;
+    }
+    .mat-progress-bar-buffer {
+        background-color: #f17474;
+    }  
+}
+body .mat-slide-toggle.mat-checked{
+    .mat-slide-toggle-thumb {
+        background-color: $CCC_Red !important;
+    }
+    .mat-slide-toggle-bar {
+        background-color: #f17474 !important;
+    }
+} 
+
+body{
+   .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+        color: $CCC_Red;
+    } 
+    .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: $CCC_Red;
+    }
+    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+        color: $CCC_Red;
+    }
+} 
+
+.imx-data-table-highlightedActive .mat-row:hover {
+    background-color: $CCC_LightRed !important;
+}
+.eui-badge .eui-badge-color--primary {
+    background-color: $CCC_Red !important;
+}
+
+
+
+
+mat-dialog-container mat-dialog-content {
+    a{
+        color: $CCC_Red;
+    } a:hover{
+        color: #f17474;
+    }
+    .eui-alert.eui-alert-type--info.eui-alert-colored{
+        background-color: $CCC_LightRed;
+    }
+    .eui-alert.eui-alert-type--info .eui-alert-icon {
+        color: $CCC_Red;
+    }
+    .mat-accent .mat-pseudo-checkbox-checked:not(.mat-pseudo-checkbox-disabled){
+        background: $CCC_Red;
+    }
+}
+
+mat-dialog-container{
+  .eui-alert.eui-alert-type--info.eui-alert-colored{
+    background-color: $CCC_LightRed;
+      eui-icon{
+        color: $CCC_Red;
+      }
+  }
+}
+
+
+body{// delagation
+    .mat-radio-button.mat-accent .mat-radio-inner-circle{
+        background-color: $CCC_Red;
+    }
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: $CCC_Red;
+    }
+    .mat-step-icon.mat-step-icon-state-edit.mat-step-icon-selected{
+        background-color: $CCC_Red ;
+    }
+    .mat-step-header .mat-step-icon-state-done{
+        background-color: $CCC_Red;
+    }
+    .mat-step-icon.mat-step-icon-state-number.mat-step-icon-selected{
+        background-color: $CCC_Red;
+    }
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: $CCC_Red;
+    }
+    .mat-form-field.mat-focused .mat-form-field-label{
+        color: $CCC_Red;
+    }
+    .mat-stroked-button.mat-primary{
+        color: $CCC_Red;
+    }
+    .mat-input-element{
+        caret-color: $CCC_Red;
+    }
+    .mat-form-field.mat-form-field-invalid .mat-form-field-label{
+        color: $CCC_Red;
+    }
+    .mat-accent .mat-pseudo-checkbox-checked{
+      background: $CCC_Red;
+    }
+}
+
+body{// for time picker
+    .mat-datepicker-toggle-active{
+        color: $CCC_Red;
+    }
+}
+//calendar
+mat-calendar div .mat-calendar-body-selected{
+    background-color: $CCC_Red;
+}
+
+imx-calendar button.mat-button.mat-primary{
+    color: $CCC_Red;
+}
+body .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover 
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {// for hover in calendar
+    background-color: $CCC_LightRed;
+}
+
+button.mat-calendar-body-cell.mat-calendar-body-active > 
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    background-color: $CCC_LightRed;
+}
+
+.snavigation .mat-sidenav-container .mat-sidenav .snavigation-side .snavigation-side-content .snavigation-item.snavigation-item--selected {
+    background-color: $CCC_Red !important;
+}
+.snavigation .mat-sidenav-container .mat-sidenav .snavigation-side .snavigation-side-content .snavigation-item:hover:not(.snavigation-item--selected) {
+    background-color: $CCC_LightRed !important;
+}
+
+ .data-explorer-card-header{
+    border: 1px solid $CCC_Red !important;
+    .data-explorer-card-header-bg{
+        background-color: $CCC_LightRed !important;
+        eui-icon{
+            color: $CCC_Red !important;
+        }
+    }
+} 
+imx-info-button button{
+    color: $CCC_Red !important;
+}
+.mat-menu-content .link-button:not(.mat-menu-item:disabled > .link-button) {
+    color: $CCC_Red;
+}
+
+
+//sidesheet 
+eui-sidesheet{
+  .eui-sidesheet .mat-toolbar{
+    background-color: $CCC_Black;
+  }
+  .eui-alert.eui-alert-condensed.eui-alert-colored.eui-alert-type--info {
+    background-color: $CCC_LightRed;
+  }
+  .eui-alert-icon{
+    color: $CCC_Red !important;
+  }
+  li.imx-event.imx-info {
+    background: linear-gradient($CCC_Black, $CCC_Black) no-repeat scroll 9px 0 transparent !important;
+    background-size: 2px 1000px !important;
+  }
+  li.imx-event.imx-info:before {// Last question about wrokflow
+    color: $CCC_Black !important;
+  }
+
+
+  //for filter sidesheat page
+
+  .expression-container:hover {
+    border-color: $CCC_Red !important;
+    .expression-container-header{
+        background-color: $CCC_Red !important;
+        color: $CCC_White !important;
+    }
+  }
+  .expression-container-header{
+    color: $CCC_Red !important;
+  }
+  .selected-logical-op{
+    color: $CCC_Red !important;
+  }
+  .mat-expansion-indicator:after {
+    color: $CCC_Red;
+  }
+  mat-expansion-panel-header:hover{
+    background: $CCC_LightRed !important;
+  }
+  eui-select .title-container .link-button{
+    color: $CCC_Red !important;
+  }
+  .eui-clickable.eui-icon:hover.eui-clickable--primary, eui-icon.eui-clickable:hover.eui-clickable--primary{
+    color: $CCC_Red;
+  }
+  .eui-clickable.eui-icon:focus.eui-clickable--primary, eui-icon.eui-clickable:focus.eui-clickable--primary{
+    color: $CCC_Red;
+  }
+
+  .imx-timeline-content{
+    border: 1px solid $CCC_Black !important;
+    background-color: $CCC_White !important;
+    .imx-timeline-events-group{
+      color: $CCC_Red !important;
+      .imx-timeline-separator-marker{
+        border: 2px solid $CCC_Red !important;
+      }
+      .imx-timeline-separator-connector{
+        background-color: $CCC_LightRed !important;
+      }
+    }
+
+    .imx-timeline-events-group:hover{
+      .imx-timeline-date{
+        color: $CCC_RedHover !important;
+      }
+      .imx-timeline-separator-marker-hover-circle{
+        background-color: $CCC_RedHover !important;
+      }
+    }
+
+    .imx-timeline-event:hover{
+      background-color: $CCC_LightRed !important;
+    }
+    
+  }
+}
+
+
+ //attestations
+ .table-icon.table-icon--primary eui-icon{
+  color: $CCC_Black !important;
+}
+
+imx-data-table[data-imx-identifier="attestations-table"]{
+  .mat-focus-indicator.mat-stroked-button.mat-button-base.mat-primary:hover{
+    background-color: $CCC_RedHover;
+    color: $CCC_White;
+  }
+  .mat-focus-indicator.mat-stroked-button.mat-button-base.mat-warn:hover{
+    background-color: $CCC_Red;
+    color: $CCC_White;
+  }
+}
+
+//Pending Request 
+imx-approvals-table imx-data-table {
+  .mat-focus-indicator.mat-stroked-button.mat-button-base.mat-primary:hover{
+    background-color: $CCC_RedHover;
+    color: $CCC_White;
+  }
+  .mat-focus-indicator.mat-stroked-button.mat-button-base.mat-warn:hover{
+    background-color: $CCC_Red;
+    color: $CCC_White;
+  }
+
+}
+
+//Responsibilities
+//Device Ownership & System Entitlement
+.mat-focus-indicator.mat-button.mat-button-base.mat-primary[data-imx-identifier="cdr-edit-fk-button-open-picker-UID_Hardware"]:focus{
+  background-color: $CCC_LightRed;
+}
+mat-step-header .mat-step-icon.mat-step-icon-state-edit{
+  background-color: $CCC_Red;
 }
 
